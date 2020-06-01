@@ -38,6 +38,9 @@ void loop() {
                 // данные от датчика DHT"        
   }
   else{
+    // рассчитаем тепловой индекс
+    float hic = dht.computeHeatIndex(t, h, false);              
+    float hif = dht.computeHeatIndex(f, h);
     //выводим данные в Serial monitor
     Serial.print("Humidity: ");  //  "Влажность: "
     Serial.print(h);
@@ -46,6 +49,12 @@ void loop() {
     Serial.print(" *C ");
     Serial.print(f);
     Serial.print(" *F\n");
+    Serial.print("Heat index: ");  //  "Тепловой индекс: "
+    Serial.print(hic);
+    Serial.print(" *C ");
+    Serial.print(hif);
+    Serial.print(" *F"); 
+    Serial.print('\n');
   }
   delay(10000);
 }
